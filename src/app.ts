@@ -6,6 +6,7 @@ export class App {
 
   public year: number;
   public loadingNotes: boolean;
+  public notes;
 
   constructor(private httpClient: HttpClient){
     this.getAllStudents();
