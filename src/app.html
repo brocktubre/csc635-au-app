@@ -11,14 +11,22 @@
 
   <div class="container">
     <div class="row"> 
-      <div class="col-md-12 text-center top-100">
+      <div class="col text-center top-100">
         <h1>CSC 685 Aureilia Notes</h1>
       </div>
     </div>
     <div class="row">
-        <div class="col-md-3 text-center top-100">
-          <div if.bind="loadingNotes" class="loader"></div>
+        <div  if.bind="loadingNotes" class="col top-100">
+          <div class="loader"></div>
         </div>
+        <div  if.bind="!loadingNotes && this.notes.length === 0" class="col text-center top-100">
+            <div class="alert alert-danger">${emptyNotes}</div>
+        </div>
+        <div  if.bind="!loadingNotes && this.notes.length > 0" class="col text-center top-100">
+          <div repeat.for="note of notes">
+            <div>${note.note}</div>
+        </div>
+      </div>
     </div>
   </div>
 
