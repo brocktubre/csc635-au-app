@@ -1,3 +1,31 @@
 <template>
-  <h1>${message}</h1>
+  <require from="bootstrap.css"></require>
+  <require from="styles.css"></require>
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">CSC 635 Aureilia App</a>
+      <a class="btn btn-primary" href="#">Button</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="row"> 
+      <div class="col-md-12 text-center top-100">
+        <h1>CSC 685 Aureilia Notes</h1>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 text-center top-100">
+          <div if.bind="loadingNotes" class="loader"></div>
+        </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+      <div class="container">
+        <span class="text-muted text-center">${year} Created by Brock Tubre</span>
+      </div>
+    </footer>
+
 </template>
