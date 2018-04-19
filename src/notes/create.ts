@@ -76,6 +76,7 @@ export class NotesCreate  {
       .then((response) => {
         this.submitSuccess = 'Successfully saved new note. ' + note.title;
         this.clearFields();
+        this.submitted = true;
         console.log(response);
       })
       .catch((error) => {
@@ -89,7 +90,6 @@ export class NotesCreate  {
   public clearFields(){
       this.noteTitle = null;
       this.noteNote = null;
-      this.submitSuccess = null;
       this.selectedCategoryDD = null;
       this.selectedUserDD = null;
   }

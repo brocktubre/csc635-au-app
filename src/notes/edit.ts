@@ -58,8 +58,8 @@ export class NotesEdit  {
   
       console.log('Sending note to API to update. ', note);
       this.httpClient
-      .post('http://notesapplication.brocktubre.com/api/v1/notes', note)
-      // .post('http://localhost:50364/api/v1/notes', note)
+      .put(Constants.REMOTE_HTTP_URL + 'api/v1/notes' + note.id, note)
+      // .post('http://localhost:50364, note)
       .then((response) => {
         this.submitSuccess = 'Successfully updated note. ' + note.title;
         console.log(response);
