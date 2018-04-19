@@ -30,8 +30,9 @@ export class NotesList {
     .then((value: any) => {
       this.loadingNotes = false;
       this.anyDeletedNotes = false;
+      this.numberOfDeletedNotes = 0;
       this.notes = JSON.parse(value.response);
-      if(this.notes.length === 0 ){
+      if(this.notes.length === 0){
         this.emptyNotes = 'There are no notes to view.';
       }
       else{
