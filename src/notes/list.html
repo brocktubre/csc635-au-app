@@ -1,4 +1,7 @@
 <template>
+  <require from="../shared/date-format"></require>
+  
+
   <div class="container">
     <div class="row"> 
       <div class="col top-100 text-center">
@@ -42,7 +45,7 @@
                                         ${n.user.name}
                                     </td> 
                                     <td>
-                                        ${n.createdOn}
+                                        ${n.createdOn | dateFormat}
                                     </td>  
                                     <td>
                                         ${n.category.name}
