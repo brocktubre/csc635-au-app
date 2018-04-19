@@ -1,15 +1,9 @@
-import { Category } from './category.model';
-import {inject} from 'aurelia-framework';
-import { HttpClient, HttpResponseMessage } from 'aurelia-http-client';
-import { Notes } from 'notes.model';
-import { User } from 'user.model';
+import { HttpClient } from 'aurelia-http-client';
+import { Notes } from "notes.model";
+import { User } from '../user.model';
+import { Category } from '../category.model';
 
-@inject (HttpClient)
-export class Home {
-
-  public year: number;
-  public loadingNotes: boolean;
-  public notes: Array<Notes>;
+export class NotesCreate  {
   public emptyNotes: string;
   public submitted: boolean;
   public submitError: string;
@@ -18,26 +12,10 @@ export class Home {
   public noteTitle: string;
   public noteNote: string;
 
-  constructor(private httpClient: HttpClient){
-    this.getAllStudents();
-    this.year = new Date().getFullYear();
-    this.loadingNotes = true;
-    this.emptyNotes = 'There are no notes in your list.';
-    this.notes = new Array<Notes>();
+  constructor(private httpClient: HttpClient) {
     this.submitted = false;
     this.submitError = null;
     this.submitSuccess = null;
-  }
-
-  getAllStudents(){
-    this.httpClient
-    .get('http://notesapplication.brocktubre.com/api/v1/notes')
-    // .get('http://localhost:50364/api/v1/notes')
-    .then((value: any) => {
-      this.loadingNotes = false;
-      this.notes = JSON.parse(value.response);
-      console.log(this.notes);
-    });
   }
 
   addNewNote(){
@@ -51,14 +29,14 @@ export class Home {
       let note = new Notes();
       let user = new User();
       let category = new Category();
-
+  
       
       note.createdOn = new Date();
       note.note = this.noteNote;
       note.title = this.noteTitle;
       note.user = user;
       note.category = category;
-
+  
       console.log('Sending note to API to save. ', note);
       this.httpClient
       .post('http://notesapplication.brocktubre.com/api/v1/notes', note)
@@ -78,11 +56,12 @@ export class Home {
       });
     }
   }
-
+  
   public clearFields(){
       this.noteTitle = null;
       this.noteNote = null;
       this.submitError = null;
       this.submitSuccess = null;
   }
+
 }

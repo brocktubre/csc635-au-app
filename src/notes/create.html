@@ -1,0 +1,23 @@
+<template>
+  <div class="container">
+    <form role="form" submit.delegate="addNewNote()">
+        <div class="form-group text-center top-25">
+          <div class="container">
+              <div class="alert alert-danger col-md-4 offset-md-4" if.bind="submitError">
+                  ${submitError}
+                </div>
+                <div class="alert alert-danger col-md-4 offset-md-4" if.bind="submitSuccess">
+                  ${submitSuccess}
+                </div>
+          </div>
+          <div class="container">
+                <input type="text" value.bind="noteTitle"  name="title" id="title" class="form-control input-sm col-md-4 offset-md-4" placeholder="Title">
+                <br />
+                <input type="text" value.bind="noteNote" name="note" id="note" class="form-control input-sm col-md-4 offset-md-4"  placeholder="Note">
+                <br />
+            </div>
+            <button type="submit"  disabled.bind="submitted" class="btn btn-success form-control input-sm col-md-4">Add New Note</button>
+          </div>
+      </form>
+  </div>
+</template>
