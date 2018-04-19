@@ -4,4 +4,14 @@ export class Notes {
   constructor() {
     this.message = 'Hello world';
   }
+
+  async activate(){
+
+  }
+
+  attached(){
+    
+  }
+
+
 }
