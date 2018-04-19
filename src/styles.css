@@ -6,6 +6,10 @@
   margin-top: 50px;
 }
 
+.top-10 {
+  margin-top: 10px;
+}
+
 .fa:hover {
   cursor: pointer;
 }

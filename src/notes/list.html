@@ -27,7 +27,8 @@
                                     <th>Added By</th> 
                                     <th>Date Added</th>  
                                     <th>Category</th>
-                                    <th></th>                                   
+                                    <th></th>
+                                    <th></th>                                
                                 </tr>
                             </thead>   
                             <tbody>
@@ -52,7 +53,10 @@
                                     </td>
                                     <td>
                                         <i class="fa fa-edit" click.delegate="editNote(n.id)"></i>
-                                    </td>                
+                                    </td>
+                                    <td>
+                                      <i class="fa fa-remove" click.delegate="removeNote(n.id)"></i>
+                                    </td>              
                                 </tr>                                  
                             </tbody>
                         </table>

@@ -15,7 +15,7 @@ export class CategoriesCreate  {
   public categoryName: string;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     this.submitted = false;
     this.submitError = null;
     this.submitSuccess = null;
@@ -66,6 +66,10 @@ export class CategoriesCreate  {
           return false;
     }
     return true;
+  }
+
+  public navigateToCategories(){
+    this.router.navigateToRoute('categories');
   }
 
 }
