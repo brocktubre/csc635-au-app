@@ -34,18 +34,21 @@ export class NotesList {
       if(this.notes.length === 0 ){
         this.emptyNotes = 'There are no notes to view.';
       }
-
-      this.notes.forEach((n) => {
-        if(n.isDeleted){
-          this.numberOfDeletedNotes++;
-          this.anyDeletedNotes = true;
+      else{
+        this.notes.forEach((n) => {
+          if(n.isDeleted){
+            this.numberOfDeletedNotes++;
+            this.anyDeletedNotes = true;
+          }
+        });
+  
+        if(this.numberOfDeletedNotes === this.notes.length){
+          this.emptyNotes = 'There are no notes to view.';
         }
-      });
-
-      if(this.numberOfDeletedNotes === this.notes.length){
-        this.emptyNotes = 'There are no notes to view.';
       }
+
       
+
       console.log(this.notes);
     });
   }

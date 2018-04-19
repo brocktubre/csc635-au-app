@@ -40,12 +40,11 @@ export class CategoriesList {
       this.errorMessage = 'Operation not allowed. Must have at least one category.';
     }
     else{
-
-    this.httpClient
-    .delete(Constants.REMOTE_HTTP_URL + 'api/v1/categories/' + categoryId)
-    .then((value: any) => {
-      this.getAllCategories();
-    });
+      this.httpClient
+      .delete(Constants.REMOTE_HTTP_URL + 'api/v1/categories/' + categoryId)
+      .then((value: any) => {
+        this.getAllCategories();
+      });
     }
   }
 

@@ -52,6 +52,7 @@ export class NotesCreate  {
     console.log('Submit new note to API.');
     this.submitted = true;
     this.submitError = null;
+    this.submitSuccess = null;
     if (!this.isFormValid()) {
       this.submitError = 'Please enter in all fields.';
       this.submitted = false;
@@ -76,7 +77,7 @@ export class NotesCreate  {
       .then((response) => {
         this.submitSuccess = 'Successfully saved new note. ' + note.title;
         this.clearFields();
-        this.submitted = true;
+        this.submitted = false;
         console.log(response);
       })
       .catch((error) => {
