@@ -2,7 +2,10 @@ import { HttpClient } from 'aurelia-http-client';
 import { Notes } from "notes.model";
 import { User } from '../user.model';
 import { Category } from '../category.model';
+import { inject } from 'aurelia-framework';
+import { Router } from 'aurelia-router';
 
+@inject (HttpClient, Router)
 export class NotesCreate  {
   public emptyNotes: string;
   public submitted: boolean;
@@ -46,8 +49,6 @@ export class NotesCreate  {
         console.log(response);
       })
       .catch((error) => {
-        debugger;
-        this.clearFields
         this.submitError = 'An error occurred. ';
         console.log(error);
       }).then(r => {
