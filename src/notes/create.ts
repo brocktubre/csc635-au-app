@@ -23,7 +23,7 @@ export class NotesCreate  {
   public selectedCategoryDD: string;
 
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     this.submitted = false;
     this.submitError = null;
     this.submitSuccess = null;
@@ -108,6 +108,10 @@ export class NotesCreate  {
 
   private categoryDropdownChanged(value: any){
     this.selectedCategoryDD = value;
+  }
+
+  private navigateToNotes(){
+    this.router.navigateToRoute('notes');
   }
 
 }

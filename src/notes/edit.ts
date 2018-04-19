@@ -19,7 +19,7 @@ export class NotesEdit  {
   public noteId: number;
   public currentNote: Notes;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private router: Router) {
     this.submitted = false;
     this.submitError = null;
     this.submitSuccess = null;
@@ -71,6 +71,10 @@ export class NotesEdit  {
         this.submitted = false;
       });
     }
+  }
+
+  private navigateToNotes(){
+    this.router.navigateToRoute('notes');
   }
 
 

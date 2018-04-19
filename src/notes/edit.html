@@ -29,8 +29,9 @@
                           <option value.bind="null" selected="true">-- Select Category --</option>
                           <option repeat.for="c of categoryList" value.bind="c.id">${c.name}</option>
                         </select>
-                      <button type="submit"  disabled.bind="submitted" class="btn btn-primary form-control input-sm top-50">Update Note <i class="fa fa-check"></i></button>
-                  </div>
+                      <button type="submit"  disabled.bind="submitted" class="btn btn-secondary form-control input-sm top-50">Update Note <i class="fa fa-check"></i></button>
+                      <button click.delegate="navigateToNotes()" class="btn btn-primary form-control input-sm top-10">View Notes <i class="fa fa-chevron-right"></i></button>
+                    </div>
                 </div>
             </form>
     </div>
