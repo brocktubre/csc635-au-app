@@ -4,6 +4,7 @@ import { User } from '../user.model';
 import { Category } from '../category.model';
 import { Router } from 'aurelia-router';
 import { inject } from 'aurelia-framework';
+import { Constants } from 'shared/constants';
 
 @inject (HttpClient, Router)
 export class NotesEdit  {
@@ -27,8 +28,7 @@ export class NotesEdit  {
   activate(params, routeData) {
     this.noteId = params.id;
     this.httpClient
-    .get('http://notesapplication.brocktubre.com/api/v1/notes/' + this.noteId)
-    // .get('http://localhost:50364/api/v1/notes')
+    .get(Constants.REMOTE_HTTP_URL + 'api/v1/notes/' + this.noteId)
     .then((value: any) => {
       this.currentNote = JSON.parse(value.response);
       this.noteNote = this.currentNote.note;

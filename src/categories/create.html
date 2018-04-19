@@ -1,0 +1,26 @@
+<template>
+  <div class="container top-100">
+        <div class="row"> 
+          <div class="col text-center">
+            <h1>Create a Category</h1>
+          </div>
+        </div>
+        <form role="form" submit.delegate="addNewCategory()">
+            <div class="form-group top-25 col-md-4 offset-md-4">
+              <div class="container">
+                    <div class="alert alert-danger" if.bind="submitError">
+                      ${submitError}
+                    </div>
+                    <div class="alert alert-success" if.bind="submitSuccess">
+                      ${submitSuccess}
+                    </div>
+              </div>
+              <div class="container">
+                    <input type="text" value.bind="categoryName"  name="name" id="name" class="form-control input-sm" placeholder="Name">
+                    <br />
+                    <button type="submit"  disabled.bind="submitted" class="btn btn-success form-control input-sm top-50">Add New Category <i class="fa fa-plus"></i></button>
+                </div>
+              </div>
+          </form>
+  </div>
+</template>

@@ -22,8 +22,8 @@ export class App {
       // { route: ['users'], name: 'users', moduleId: PLATFORM.moduleName('./users/list') },
       // { route: ['create-user'], name: 'create-user', moduleId: PLATFORM.moduleName('./users/create') },
 
-      // { route: ['categories'], name: 'categories', moduleId: PLATFORM.moduleName('./categories/list') },
-      // { route: ['create-category'], name: 'create-category', moduleId: PLATFORM.moduleName('./categories/create') },
+      { route: ['categories'], name: 'categories', moduleId: PLATFORM.moduleName('./categories/list') },
+      { route: ['create-category'], name: 'create-category', moduleId: PLATFORM.moduleName('./categories/create') },
 
     ]);
     config.mapUnknownRoutes('./home');

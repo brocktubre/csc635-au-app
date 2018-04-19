@@ -4,6 +4,7 @@ import { Notes } from "notes.model";
 import { User } from '../user.model';
 import { inject } from 'aurelia-framework';
 import { Router } from 'aurelia-router';
+import { Constants } from 'shared/constants';
 
 @inject (HttpClient, Router)
 export class NotesCreate  {
@@ -33,17 +34,17 @@ export class NotesCreate  {
   }
 
   async activate(){
-    this.categoryList.push(new Category());
-    let cat = new Category();
-    cat.id = 500;
-    cat.name = 'Brock';
-    this.categoryList.push(cat);
 
     this.httpClient
-    .get('http://notesapplication.brocktubre.com/api/v1/users/')
-    // .get('http://localhost:50364/api/v1/notes')
+    .get(Constants.REMOTE_HTTP_URL + 'api/v1/users/')
     .then((value: any) => {
       this.userList = JSON.parse(value.response);
+    });
+
+    this.httpClient
+    .get(Constants.REMOTE_HTTP_URL + 'api/v1/categories/')
+    .then((value: any) => {
+      this.categoryList = JSON.parse(value.response);
     });
   }
 
@@ -59,8 +60,9 @@ export class NotesCreate  {
       let note = new Notes();
       let user = new User();
       let category = new Category();
-  
       
+      user.id = parseInt(this.selectedUserDD);
+      category.id = parseInt(this.selectedCategoryDD);
       note.createdOn = new Date();
       note.note = this.noteNote;
       note.title = this.noteTitle;
@@ -69,8 +71,7 @@ export class NotesCreate  {
   
       console.log('Sending note to API to save. ', note);
       this.httpClient
-      .post('http://notesapplication.brocktubre.com/api/v1/notes', note)
-      // .post('http://localhost:50364/api/v1/notes', note)
+      .post(Constants.REMOTE_HTTP_URL + 'api/v1/notes', note)
       .then((response) => {
         this.submitSuccess = 'Successfully submitted note. ' + note.title;
         console.log(response);

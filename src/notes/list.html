@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="row">
-        <div  if.bind="loadingNotes" class="col top-100">
+        <div  if.bind="loadingNotes" class="col top-100 justify-content-center">
           <div class="loader"></div>
         </div>
         <div if.bind="!loadingNotes && notes.length === 0" class="col text-center top-100">
@@ -62,7 +62,7 @@
     </div>
     <div class="row">
         <div class="col justify-content-center">
-          <div class="col-2 offset-5 text-center">
+          <div class="col-4 offset-4 text-center">
           <button class="btn btn-success form-control" click.delegate="navigateToCreateNote()"> Add New Note <i class="fa fa-plus"></i></button>
         </div>
       </div>

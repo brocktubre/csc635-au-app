@@ -1,3 +1,4 @@
+import { Constants } from './../shared/constants';
 import { Category } from '../category.model';
 import {inject} from 'aurelia-framework';
 import { HttpClient, HttpResponseMessage } from 'aurelia-http-client';
@@ -18,8 +19,7 @@ export class NotesList {
 
   public getAllStudents(){
     this.httpClient
-    .get('http://notesapplication.brocktubre.com/api/v1/notes')
-    // .get('http://localhost:50364/api/v1/notes')
+    .get(Constants.REMOTE_HTTP_URL + 'api/v1/notes')
     .then((value: any) => {
       this.loadingNotes = false;
       this.notes = JSON.parse(value.response);
