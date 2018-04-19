@@ -1,0 +1,57 @@
+<template>
+  
+  <div class="container">
+    <div class="row"> 
+      <div class="col top-100 text-center">
+        <h1>Users</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div  if.bind="loadingUsers" class="col top-100 justify-content-center">
+        <div class="loader"></div>
+      </div>
+      <div if.bind="errorMessage" class="col text-center">
+          <div class="alert alert-danger">${errorMessage}</div>
+      </div>
+      <div if.bind="!loadingUsers && users.length > 0" class="container table-container">
+            <div class="col">
+                <div class="row">
+                        <table class="table table-striped table-condensed">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th></th>                                 
+                                </tr>
+                            </thead>   
+                            <tbody>
+                                <tr repeat.for="u of users">
+                                    <td>
+                                        ${u.id}
+                                    </td>
+                                    <td>
+                                        ${u.name}
+                                    </td>
+                                    <td>
+                                      ${u.email}
+                                    </td>
+                                    <td>
+                                      <i class="fa fa-remove" click.delegate="removeUser(u.id)"></i>
+                                    </td>              
+                                </tr>                                  
+                            </tbody>
+                        </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col justify-content-center">
+          <div class="col-4 offset-4 text-center">
+          <button class="btn btn-success form-control" click.delegate="navigateToCreateUser()"> Add New User <i class="fa fa-plus"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>

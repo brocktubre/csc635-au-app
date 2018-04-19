@@ -68,12 +68,14 @@ export class NotesCreate  {
       note.title = this.noteTitle;
       note.user = user;
       note.category = category;
+      note.isDeleted = false;
   
       console.log('Sending note to API to save. ', note);
       this.httpClient
       .post(Constants.REMOTE_HTTP_URL + 'api/v1/notes', note)
       .then((response) => {
-        this.submitSuccess = 'Successfully submitted note. ' + note.title;
+        this.submitSuccess = 'Successfully saved new note. ' + note.title;
+        this.clearFields();
         console.log(response);
       })
       .catch((error) => {

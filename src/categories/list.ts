@@ -35,7 +35,7 @@ export class CategoriesList {
   }
 
   public removeCategory(categoryId: number){
-    console.log('Trying to remove noteId: ' + categoryId);
+    console.log('Trying to remove categoryId: ' + categoryId);
     if(this.categories.length === 1){
       this.errorMessage = 'Operation not allowed. Must have at least one category.';
     }

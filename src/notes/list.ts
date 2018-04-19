@@ -8,13 +8,14 @@ import { Router } from 'aurelia-router';
 
 @inject (HttpClient, Router)
 export class NotesList {
-
+  public emptyNotes: string;
   public loadingNotes: boolean;
   public notes: Array<Notes>;
 
   constructor(private httpClient: HttpClient, private router: Router){
     this.getAllNotes();
     this.loadingNotes = true;
+    this.emptyNotes = null;
   }
 
   public getAllNotes(){
@@ -23,6 +24,9 @@ export class NotesList {
     .then((value: any) => {
       this.loadingNotes = false;
       this.notes = JSON.parse(value.response);
+      if(this.notes.length === 0){
+        this.emptyNotes = 'There are no notes to view.';
+      }
       console.log(this.notes);
     });
   }
