@@ -30,6 +30,7 @@ export class CategoriesCreate  {
     console.log('Submit new category to API.');
     this.submitted = true;
     this.submitError = null;
+    this.submitSuccess = null;
     if (!this.isFormValid()) {
       this.submitError = 'Please enter in category name.';
       this.submitted = false;
@@ -44,6 +45,8 @@ export class CategoriesCreate  {
       .post(Constants.REMOTE_HTTP_URL + 'api/v1/categories', category)
       .then((response) => {
         this.submitSuccess = 'Successfully created new category. ' + category.name;
+        this.submitted = false;
+        this.categoryName = null;
         console.log(response);
       })
       .catch((error) => {
@@ -55,7 +58,6 @@ export class CategoriesCreate  {
   }
   
   public clearFields(){
-      this.submitSuccess = null;
       this.categoryName = null;
   }
 
