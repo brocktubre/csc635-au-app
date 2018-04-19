@@ -6,6 +6,10 @@
   padding-top: 50;
 }
 
+.fa:hover {
+  cursor: pointer;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
