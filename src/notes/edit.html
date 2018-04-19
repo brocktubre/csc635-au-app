@@ -20,6 +20,15 @@
                       <br />
                       <input type="text" value.bind="noteNote" name="note" id="note" class="form-control input-sm col-md-4 offset-md-4"  placeholder="Note">
                       <br />
+                      <select class="form-control" value.bind="changedUserValue" change.delegate="userDropdownChanged(changedUserValue)">
+                          <option value.bind="null" selected="true">-- Select User --</option>
+                          <option repeat.for="u of userList" value.bind="u.id">${u.name} - ${u.email}</option>
+                        </select>
+                        <br />
+                        <select class="form-control"value.bind="changedCategoryValue" change.delegate="categoryDropdownChanged(changedCategoryValue)">
+                          <option value.bind="null" selected="true">-- Select Category --</option>
+                          <option repeat.for="c of categoryList" value.bind="c.id">${c.name}</option>
+                        </select>
                   </div>
                   <button type="submit"  disabled.bind="submitted" class="btn btn-primary form-control input-sm col-md-4">Update Note <i class="fa fa-check"></i></button>
                 </div>

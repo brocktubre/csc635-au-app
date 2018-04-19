@@ -8,7 +8,7 @@
         <form role="form" submit.delegate="addNewNote()">
             <div class="form-group top-25 col-md-4 offset-md-4">
               <div class="container">
-                  <div class="alert alert-danger" if.bind="submitError">
+                    <div class="alert alert-danger" if.bind="submitError">
                       ${submitError}
                     </div>
                     <div class="alert alert-danger" if.bind="submitSuccess">
@@ -20,18 +20,16 @@
                     <br />
                     <input type="text" value.bind="noteNote" name="note" id="note" class="form-control input-sm"  placeholder="Note">
                     <br />
-                    <select class="form-control" id="userSelect">
-                        <option value.bind="null" select="true">-- Select User --</option>
-                        <option value.bind="1">1</option>
-                        <option value.bind="2">2</option>
+                    <select class="form-control" value.bind="changedUserValue" change.delegate="userDropdownChanged(changedUserValue)">
+                      <option value.bind="null" selected="true">-- Select User --</option>
+                      <option repeat.for="u of userList" value.bind="u.id">${u.name} - ${u.email}</option>
                     </select>
                     <br />
-                    <select class="form-control" id="categorySelect">
-                      <option value.bind="null" select="true">-- Select Category --</option>
-                      <option value.bind="1">1</option>
-                      <option value.bind="2">2</option>
+                    <select class="form-control"value.bind="changedCategoryValue" change.delegate="categoryDropdownChanged(changedCategoryValue)">
+                      <option value.bind="null" selected="true">-- Select Category --</option>
+                      <option repeat.for="c of categoryList" value.bind="c.id">${c.name}</option>
                     </select>
-                    <button type="submit"  disabled.bind="submitted" class="btn btn-success form-control input-sm top-50">Add New Note</button>
+                    <button type="submit"  disabled.bind="submitted" class="btn btn-success form-control input-sm top-50">Add New Note <i class="fa fa-plus"></i></button>
                 </div>
               </div>
           </form>
