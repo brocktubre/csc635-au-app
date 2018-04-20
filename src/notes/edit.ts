@@ -52,7 +52,10 @@ export class NotesEdit  {
       this.noteTitle = this.currentNote.title;
       this.categoryValue = this.currentNote.category;
       this.userValue = this.currentNote.user;
+      debugger;
       console.log(this.currentNote);
+      console.log(this.categoryValue);
+      console.log(this.userValue);
     });
   }
 

@@ -20,14 +20,14 @@
                       <br />
                       <input type="text" value.bind="noteNote" name="note" id="note" class="form-control input-sm"  placeholder="Note">
                       <br />
-                      <select class="form-control" value.bind="userValue" change.delegate="userDropdownChanged(userValue)">
+                      <select class="form-control" value.bind="userValue.id" change.delegate="userDropdownChanged(userValue)">
                           <option value.bind="null" model.bind="null" disabled="true">-- Select User --</option>
-                          <option repeat.for="u of userList" value.bind="u" model.bind="u">${u.name} - ${u.email}</option>
+                          <option repeat.for="u of userList" value.bind="u" model.bind="u.id">${u.name} - ${u.email}</option>
                         </select>
                         <br />
-                        <select class="form-control" value.bind="categoryValue" change.delegate="categoryDropdownChanged(categoryValue)">
+                        <select class="form-control" value.bind="categoryValue.id" change.delegate="categoryDropdownChanged(categoryValue)">
                           <option value.bind="null" model.bind="null" disabled="true">-- Select Category --</option>
-                          <option repeat.for="c of categoryList" value.bind="c" model.bind="c">${c.name}</option>
+                          <option repeat.for="c of categoryList" value.bind="c" model.bind="c.id">${c.name}</option>
                         </select>
                       <button type="submit"  disabled.bind="submitted" class="btn btn-secondary form-control input-sm top-50">Update Note <i class="fa fa-check"></i></button>
                       <button click.delegate="navigateToNotes()" class="btn btn-primary form-control input-sm top-10">View Notes <i class="fa fa-chevron-right"></i></button>
