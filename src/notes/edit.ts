@@ -56,29 +56,26 @@ export class NotesEdit  {
     });
   }
 
-  editNote(){
-    console.log('Updating an existing note.');
+  updateNote(){
+    console.log('Updating exsiting note.');
     this.submitted = true;
-    if (!this.noteNote || !this.noteTitle) {
+    this.submitError = null;
+    this.submitSuccess = null;
+    if (!this.isFormValid()) {
       this.submitError = 'Please enter in all fields.';
       this.submitted = false;
     }
     else{
-      let note = new Notes();
-      let user = new User();
-      let category = new Category();
-  
+      let note = this.currentNote;
       
-      note.createdOn = new Date();
       note.note = this.noteNote;
       note.title = this.noteTitle;
-      note.user = user;
-      note.category = category;
-  
+      note.user = this.userValue;
+      note.category = this.categoryValue;
+
       console.log('Sending note to API to update. ', note);
       this.httpClient
-      .put(Constants.REMOTE_HTTP_URL + 'api/v1/notes' + note.id, note)
-      // .post('http://localhost:50364, note)
+      .put(Constants.REMOTE_HTTP_URL + 'api/v1/notes/' + note.id, note)
       .then((response) => {
         this.submitSuccess = 'Successfully updated note. ' + note.title;
         console.log(response);
@@ -102,6 +99,16 @@ export class NotesEdit  {
 
   private navigateToNotes(){
     this.router.navigateToRoute('notes');
+  }
+
+  private isFormValid(){
+    if (!this.noteNote
+        || !this.noteTitle
+        || this.userValue === null
+        || this.categoryValue === null ) {
+          return false;
+    }
+    return true;
   }
 
 
