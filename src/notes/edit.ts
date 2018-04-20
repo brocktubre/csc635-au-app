@@ -15,9 +15,14 @@ export class NotesEdit  {
 
   public noteTitle: string;
   public noteNote: string;
+  public categoryValue: Category;
+  public userValue: User;
 
   public noteId: number;
   public currentNote: Notes;
+
+  public categoryList: Array<Category>;
+  public userList: Array<User>;
 
   constructor(private httpClient: HttpClient, private router: Router) {
     this.submitted = false;
@@ -25,7 +30,19 @@ export class NotesEdit  {
     this.submitSuccess = null;
   }
 
-  activate(params, routeData) {
+  async activate(params, routeData) {
+    this.httpClient
+    .get(Constants.REMOTE_HTTP_URL + 'api/v1/users/')
+    .then((value: any) => {
+      this.userList = JSON.parse(value.response);
+    });
+
+    this.httpClient
+    .get(Constants.REMOTE_HTTP_URL + 'api/v1/categories/')
+    .then((value: any) => {
+      this.categoryList = JSON.parse(value.response);
+    });
+
     this.noteId = params.id;
     this.httpClient
     .get(Constants.REMOTE_HTTP_URL + 'api/v1/notes/' + this.noteId)
@@ -33,9 +50,11 @@ export class NotesEdit  {
       this.currentNote = JSON.parse(value.response);
       this.noteNote = this.currentNote.note;
       this.noteTitle = this.currentNote.title;
+      this.categoryValue = this.currentNote.category;
+      this.userValue = this.currentNote.user;
       console.log(this.currentNote);
     });
-  } 
+  }
 
   editNote(){
     console.log('Updating an existing note.');
@@ -71,6 +90,14 @@ export class NotesEdit  {
         this.submitted = false;
       });
     }
+  }
+
+  private userDropdownChanged(value: any){
+    this.userValue = value;
+  }
+
+  private categoryDropdownChanged(value: any){
+    this.categoryValue = value;
   }
 
   private navigateToNotes(){
