@@ -44,7 +44,14 @@ export class CategoriesList {
       .delete(Constants.REMOTE_HTTP_URL + 'api/v1/categories/' + categoryId)
       .then((value: any) => {
         this.getAllCategories();
-      });
+      }, (error) => {
+        if(error.statusCode === 405){
+        this.errorMessage = 'Cannot delete a category that is associated with any notes. This includes hidden notes.';
+      }
+      else{
+        this.errorMessage = 'Something went wrong. ' + error;
+      }
+    });
     }
   }
 

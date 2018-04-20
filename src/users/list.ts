@@ -40,11 +40,18 @@ export class UsersList {
     }
     else{
 
-    this.httpClient
-    .delete(Constants.REMOTE_HTTP_URL + 'api/v1/users/' + userId)
-    .then((value: any) => {
-      this.getAllUsers();
-    });
+      this.httpClient
+      .delete(Constants.REMOTE_HTTP_URL + 'api/v1/users/' + userId)
+      .then((value: any) => {
+        this.getAllUsers();
+      }, (error) => {
+        if(error.statusCode === 405){
+          this.errorMessage = 'Cannot delete a user that is associated with any notes. This includes hidden notes.';
+        }
+        else{
+          this.errorMessage = 'Something went wrong. ', error;
+        }
+      });
     }
   }
 

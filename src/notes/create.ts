@@ -19,8 +19,8 @@ export class NotesCreate  {
   public categoryList: Array<Category>;
   public userList: Array<User>;
 
-  public selectedUserDD: string;
-  public selectedCategoryDD: string;
+  public selectedUserDD: User;
+  public selectedCategoryDD: Category;
 
 
   constructor(private httpClient: HttpClient, private router: Router) {
@@ -62,8 +62,8 @@ export class NotesCreate  {
       let user = new User();
       let category = new Category();
       
-      user.id = parseInt(this.selectedUserDD);
-      category.id = parseInt(this.selectedCategoryDD);
+      user.id = this.selectedUserDD.id;
+      category.id =this.selectedCategoryDD.id;
       note.createdOn = new Date();
       note.note = this.noteNote;
       note.title = this.noteTitle;
