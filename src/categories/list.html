@@ -21,7 +21,8 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Name</th>
-                                    <th></th>                                 
+                                    <th></th>
+                                    <th></th>                                
                                 </tr>
                             </thead>   
                             <tbody>
@@ -32,6 +33,9 @@
                                     <td>
                                         ${c.name}
                                     </td>
+                                    <td>
+                                      <i class="fa fa-edit" click.delegate="navigateToEditCategory(c.id)"></i>
+                                    </td>  
                                     <td>
                                       <i class="fa fa-remove" click.delegate="removeCategory(c.id)"></i>
                                     </td>              

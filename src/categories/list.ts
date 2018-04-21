@@ -34,6 +34,10 @@ export class CategoriesList {
     this.router.navigateToRoute('create-category');
   }
 
+  public navigateToEditCategory(catId: number){
+    this.router.navigateToRoute('edit-category', {id: catId});
+  }
+
   public removeCategory(categoryId: number){
     console.log('Trying to remove categoryId: ' + categoryId);
     if(this.categories.length === 1){

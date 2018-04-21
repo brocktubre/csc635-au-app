@@ -33,6 +33,10 @@ export class UsersList {
     this.router.navigateToRoute('create-user');
   }
 
+  public navigateToEditUser(userId: number){
+    this.router.navigateToRoute('edit-user', {id: userId});
+  }
+
   public removeUser(userId: number){
     console.log('Trying to remove userId: ' + userId);
     if(this.users.length === 1){

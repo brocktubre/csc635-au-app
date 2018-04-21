@@ -22,7 +22,8 @@
                                     <th>Id</th>
                                     <th>Name</th>
                                     <th>Email</th>
-                                    <th></th>                                 
+                                    <th></th>
+                                    <th></th>                             
                                 </tr>
                             </thead>   
                             <tbody>
@@ -37,8 +38,11 @@
                                       ${u.email}
                                     </td>
                                     <td>
+                                      <i class="fa fa-edit" click.delegate="navigateToEditUser(u.id)"></i>
+                                    </td>
+                                    <td>
                                       <i class="fa fa-remove" click.delegate="removeUser(u.id)"></i>
-                                    </td>              
+                                    </td>                       
                                 </tr>                                  
                             </tbody>
                         </table>
