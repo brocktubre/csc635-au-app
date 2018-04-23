@@ -8,7 +8,21 @@
         <i class="fa fa-home" click.delegate="navigateHome()"></i>
       </div>
     </nav>
-    <router-view></router-view>
+    <!-- <router-view></router-view> -->
+
+     <!-- The Aurelia Way -->
+  <!--<require from="./redux/markdown-aurelia"></require>
+  <markdown-aurelia raw.bind="data"></markdown-aurelia>-->
+
+  <!-- The Redux Way -->
+  <!--<require from="./redux/markdown-redux"></require>
+  <markdown-redux raw.bind="data"></markdown-redux>-->
+
+    <!-- The Redux Way with Undo/Redo -->
+    <require from="./redux/markdown"></require>
+    <markdown raw.bind="data"></markdown>
+
+
     <div class="container spacer"></div>
     <footer class="footer">
         <div class="container">

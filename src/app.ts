@@ -5,7 +5,9 @@ import { RouterConfiguration, Router } from 'aurelia-router';
 export class App {
   public year: number;
   public router: Router;
+  public data: string;
   constructor(){
+    this.data = 'Hello World!';
     this.year = new Date().getFullYear();
   }
 
