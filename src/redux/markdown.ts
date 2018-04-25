@@ -42,10 +42,14 @@ export class Markdown {
 
   undo() {
     this.store.dispatch(ActionCreators.undo());
+    let store = this.store.getState();
+    debugger;
   }
 
   redo() {
     this.store.dispatch(ActionCreators.redo());
+    let store = this.store.getState();
+    debugger;
   }
 
   attached() {
