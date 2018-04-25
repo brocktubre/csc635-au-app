@@ -1,7 +1,7 @@
 <template>
   <require from="../styles.css"></require>
     <div class="container col text-center">
-      <h1 style="padding-top: 50px;">Aurelia Markdown Redux</h1>
+      <h1 style="padding-top: 50px;">Redux Sandbox</h1>
 
       <div class="toolbar" style="padding-bottom: 25px; padding-top: 50px;">
         <button class="btn btn-sm btn-success" click.trigger="undo()">(${pastCount}) Undo</button>
@@ -14,5 +14,5 @@
                   value.to-view="raw"></textarea>
         <div class="preview" innerhtml.bind="html"></div>
       </div>
-</div>
+    </div>
 </template>
