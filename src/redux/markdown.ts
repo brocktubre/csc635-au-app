@@ -23,6 +23,8 @@ export class Markdown {
     // that the Redux store will call any time an
     // action has been dispatched.
     this.store.subscribe(this.update.bind(this));
+    let currState = this.store.getState();
+    // debugger;
   }
 
   update() {
